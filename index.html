@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#050509">
+
+<title>AM Premium</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --bg:#050509;
+    --card:rgba(16,16,24,.72);
+    --border:rgba(255,255,255,.10);
+    --text:#fff;
+    --muted:#858592;
+    --cyan:#62eaff;
+    --purple:#9d6cff;
+    --pink:#ff5fcf;
+    --green:#55f2aa;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    color:var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Inter",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(111,76,255,.30),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 0% 45%,
+            rgba(0,220,255,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 100% 70%,
+            rgba(255,50,190,.08),
+            transparent 28%
+        ),
+        #050509;
+}
+
+
+/* ==============================
+   BACKGROUND LIGHTS
+============================== */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.18;
+    pointer-events:none;
+    z-index:-1;
+}
+
+body::before{
+    background:#6c4cff;
+    top:25%;
+    left:-180px;
+}
+
+body::after{
+    background:#00d9ff;
+    right:-180px;
+    bottom:15%;
+}
+
+
+/* ==============================
+   CONTAINER
+============================== */
+
+.container{
+    width:min(900px,100%);
+    margin:auto;
+    padding-bottom:70px;
+}
+
+
+/* ==============================
+   HERO
+============================== */
+
+.hero{
+    height:285px;
+    position:relative;
+    overflow:hidden;
+
+    padding:25px;
+
+    display:flex;
+    align-items:flex-end;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(97,71,255,.20),
+            rgba(0,0,0,.05)
+        );
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    top:-170px;
+    right:-100px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(98,234,255,.35),
+            transparent 65%
+        );
+
+    filter:blur(10px);
+
+    animation:floatGlow 5s ease-in-out infinite;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            #050509 0%,
+            transparent 65%
+        );
+}
+
+@keyframes floatGlow{
+    0%,100%{
+        transform:translate(0,0);
+    }
+    50%{
+        transform:translate(-20px,20px);
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 12px;
+
+    margin-bottom:13px;
+
+    border:1px solid rgba(98,234,255,.20);
+
+    border-radius:30px;
+
+    background:rgba(98,234,255,.07);
+
+    color:#aeefff;
+
+    font-size:9px;
+    font-weight:900;
+
+    letter-spacing:1.5px;
+
+    box-shadow:
+        0 0 25px rgba(98,234,255,.08);
+}
+
+.status-dot{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 10px var(--green);
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:.45;
+        transform:scale(.7);
+    }
+}
+
+.logo{
+    font-size:42px;
+    font-weight:950;
+
+    letter-spacing:-2px;
+
+    line-height:1;
+}
+
+.logo span{
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--purple),
+            var(--pink)
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    text-shadow:
+        0 0 30px rgba(98,234,255,.18);
+}
+
+.subtitle{
+    margin-top:10px;
+
+    color:#777784;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+}
+
+
+/* ==============================
+   PROFILE
+============================== */
+
+.profile{
+    margin:-1px 22px 25px;
+
+    position:relative;
+    z-index:5;
+
+    padding:19px;
+
+    border:1px solid var(--border);
+
+    border-radius:26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,30,42,.82),
+            rgba(12,12,18,.75)
+        );
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.profile-top{
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+}
+
+.avatar{
+    width:58px;
+    height:58px;
+
+    flex-shrink:0;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #272733,
+            #111119
+        );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 25px rgba(157,108,255,.15);
+
+    font-size:26px;
+}
+
+.profile-name{
+    font-size:15px;
+    font-weight:900;
+}
+
+.profile-role{
+    margin-top:5px;
+
+    color:#777784;
+
+    font-size:9px;
+}
+
+.profile-status{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:7px 10px;
+
+    border-radius:20px;
+
+    background:rgba(85,242,170,.06);
+
+    border:1px solid rgba(85,242,170,.15);
+
+    color:#70efb4;
+
+    font-size:8px;
+    font-weight:900;
+}
+
+.profile-info{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:8px;
+
+    margin-top:16px;
+}
+
+.info{
+    padding:10px;
+
+    border-radius:13px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    text-align:center;
+}
+
+.info small{
+    display:block;
+
+    color:#666672;
+
+    font-size:7px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.info b{
+    display:block;
+
+    margin-top:4px;
+
+    color:#d8d8df;
+
+    font-size:9px;
+}
+
+
+/* ==============================
+   NAV
+============================== */
+
+.nav-wrap{
+    padding:0 18px;
+
+    overflow:hidden;
+}
+
+.nav{
+    display:flex;
+
+    gap:9px;
+
+    overflow-x:auto;
+
+    padding:3px 2px 13px;
+
+    scrollbar-width:none;
+}
+
+.nav::-webkit-scrollbar{
+    display:none;
+}
+
+.nav-btn{
+    flex-shrink:0;
+
+    height:45px;
+
+    padding:0 18px;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#70707b;
+
+    font-family:inherit;
+
+    font-size:9px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.nav-btn.active{
+    color:#fff;
+
+    border-color:
+        rgba(98,234,255,.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98,234,255,.13),
+            rgba(157,108,255,.12)
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(98,234,255,.07);
+}
+
+.nav-btn:active{
+    transform:scale(.95);
+}
+
+
+/* ==============================
+   CONTENT
+============================== */
+
+.section{
+    padding:
+        25px 18px 0;
+}
+
+.heading{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:16px;
+}
+
+.heading-icon{
+    width:34px;
+    height:34px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98,234,255,.12),
+            rgba(157,108,255,.12)
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--cyan);
+}
+
+.heading h2{
+    font-size:22px;
+
+    font-weight:950;
+
+    letter-spacing:-.5px;
+}
+
+.heading-line{
+    flex:1;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.13),
+            transparent
+        );
+}
+
+
+/* ==============================
+   PREMIUM CARD
+============================== */
+
+.premium-card{
+    position:relative;
+
+    padding:23px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(157,108,255,.18);
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,22,38,.90),
+            rgba(10,10,15,.85)
+        );
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.4),
+        0 0 50px rgba(157,108,255,.04);
+}
+
+.premium-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:-100px;
+    right:-60px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(157,108,255,.28),
+            transparent 65%
+        );
+
+    filter:blur(5px);
+}
+
+.premium-top{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:22px;
+}
+
+.premium-icon{
+    width:52px;
+    height:52px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98,234,255,.15),
+            rgba(157,108,255,.16)
+        );
+
+    border:1px solid rgba(255,255,255,.10);
+
+    color:#fff;
+
+    font-size:24px;
+
+    box-shadow:
+        0 0 30px rgba(157,108,255,.10);
+}
+
+.premium-title{
+    font-size:16px;
+    font-weight:950;
+}
+
+.premium-desc{
+    margin-top:5px;
+
+    color:#777784;
+
+    font-size:9px;
+}
+
+
+/* ==============================
+   FORM
+============================== */
+
+.field{
+    margin-top:14px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#73737f;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:1.2px;
+
+    text-transform:uppercase;
+}
+
+.input,
+.textarea{
+    width:100%;
+
+    outline:none;
+
+    color:#fff;
+
+    background:
+        rgba(0,0,0,.35);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:13px;
+
+    font-family:inherit;
+
+    transition:.2s;
+}
+
+.input{
+    height:45px;
+
+    padding:0 13px;
+
+    font-size:10px;
+}
+
+.textarea{
+    min-height:76px;
+
+    padding:12px;
+
+    resize:none;
+
+    font-size:10px;
+}
+
+.input:focus,
+.textarea:focus{
+    border-color:
+        rgba(98,234,255,.40);
+
+    box-shadow:
+        0 0 20px
+        rgba(98,234,255,.06);
+}
+
+.input::placeholder,
+.textarea::placeholder{
+    color:#45454f;
+}
+
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.actions{
+    display:flex;
+
+    gap:9px;
+
+    margin-top:10px;
+}
+
+.btn{
+    height:38px;
+
+    padding:0 15px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:11px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98,234,255,.13),
+            rgba(157,108,255,.15)
+        );
+
+    font-family:inherit;
+
+    font-size:8px;
+    font-weight:950;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:
+        0 0 20px
+        rgba(98,234,255,.04);
+}
+
+.btn.verify{
+    background:
+        rgba(255,255,255,.035);
+
+    color:#aaa;
+}
+
+.btn:hover{
+    border-color:
+        rgba(98,255,255,.30);
+
+    box-shadow:
+        0 0 25px
+        rgba(98,234,255,.10);
+}
+
+.btn:active{
+    transform:scale(.95);
+}
+
+.btn.loading{
+    opacity:.6;
+    pointer-events:none;
+}
+
+
+/* ==============================
+   RESULT
+============================== */
+
+.result{
+    display:none;
+
+    margin-top:12px;
+
+    padding:11px 13px;
+
+    border-radius:12px;
+
+    font-size:9px;
+
+    line-height:1.5;
+}
+
+.result.show{
+    display:block;
+}
+
+.result.ok{
+    color:#69edb0;
+
+    background:
+        rgba(85,242,170,.05);
+
+    border:
+        1px solid
+        rgba(85,242,170,.13);
+}
+
+.result.error{
+    color:#ff7085;
+
+    background:
+        rgba(255,70,100,.05);
+
+    border:
+        1px solid
+        rgba(255,70,100,.13);
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer{
+    padding:35px 20px 0;
+
+    text-align:center;
+
+    color:#3f3f48;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:500px){
+
+    .hero{
+        height:245px;
+    }
+
+    .logo{
+        font-size:35px;
+    }
+
+    .profile{
+        margin-left:18px;
+        margin-right:18px;
+    }
+
+    .profile-info{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .section{
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+    .premium-card{
+        padding:19px;
+    }
+
+}
+
+@media(max-width:360px){
+
+    .profile-status{
+        display:none;
+    }
+
+    .profile-info{
+        gap:5px;
+    }
+
+    .nav-btn{
+        padding:0 14px;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- ==============================
+     HERO
+============================== -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="status-pill">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+        <div class="logo">
+            AM <span>Premium</span>
+        </div>
+
+        <div class="subtitle">
+            SECURE ACCOUNT SYSTEM
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ==============================
+     PROFILE
+============================== -->
+
+<section class="profile">
+
+    <div class="profile-top">
+
+        <div class="avatar">
+            ◉
+        </div>
+
+        <div>
+
+            <div class="profile-name">
+                AM Account
+            </div>
+
+            <div class="profile-role">
+                Premium verification system
+            </div>
+
+        </div>
+
+        <div class="profile-status">
+            <span class="status-dot"></span>
+            ONLINE
+        </div>
+
+    </div>
+
+
+    <div class="profile-info">
+
+        <div class="info">
+            <small>Region</small>
+            <b>Indonesia</b>
+        </div>
+
+        <div class="info">
+            <small>System</small>
+            <b>AM API</b>
+        </div>
+
+        <div class="info">
+            <small>Security</small>
+            <b>Active</b>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     NAV
+============================== -->
+
+<div class="nav-wrap">
+
+    <div class="nav">
+
+        <button
+            class="nav-btn active"
+            onclick="showPanel('premium',this)">
+            ✦ AM PREMIUM
+        </button>
+
+        <button
+            class="nav-btn"
+            onclick="showPanel('about',this)">
+            ◉ ABOUT
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==============================
+     PREMIUM
+============================== -->
+
+<section
+    id="premium"
+    class="section panel">
+
+    <div class="heading">
+
+        <div class="heading-icon">
+            ✦
+        </div>
+
+        <h2>
+            AM Premium
+        </h2>
+
+        <div class="heading-line"></div>
+
+    </div>
+
+
+    <div class="premium-card">
+
+        <div class="premium-top">
+
+            <div class="premium-icon">
+                ✦
+            </div>
+
+            <div>
+
+                <div class="premium-title">
+                    Magic Link
+                </div>
+
+                <div class="premium-desc">
+                    Send & verify account
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="field">
+
+            <label class="label">
+                Account Email
+            </label>
+
+            <input
+                id="email"
+                class="input"
+                type="email"
+                autocomplete="email"
+                placeholder="nama@email.com"
+            >
+
+        </div>
+
+
+        <div class="actions">
+
+            <button
+                id="sendBtn"
+                class="btn"
+                onclick="sendMagic()">
+
+                ↗ SEND MAGIC LINK
+
+            </button>
+
+        </div>
+
+
+        <!-- URL -->
+
+        <div class="field">
+
+            <label class="label">
+                Magic Link URL
+            </label>
+
+            <textarea
+                id="magicUrl"
+                class="textarea"
+                placeholder="Paste Magic Link di sini..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="actions">
+
+            <button
+                id="verifyBtn"
+                class="btn verify"
+                onclick="verifyMagic()">
+
+                ✓ VERIFY LINK
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="result"
+            class="result">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     ABOUT
+============================== -->
+
+<section
+    id="about"
+    class="section panel"
+    style="display:none">
+
+    <div class="heading">
+
+        <div class="heading-icon">
+            ◉
+        </div>
+
+        <h2>
+            About
+        </h2>
+
+        <div class="heading-line"></div>
+
+    </div>
+
+
+    <div class="premium-card">
+
+        <div class="premium-top">
+
+            <div class="premium-icon">
+                ⚡
+            </div>
+
+            <div>
+
+                <div class="premium-title">
+                    AM Premium
+                </div>
+
+                <div class="premium-desc">
+                    Secure account verification
+                </div>
+
+            </div>
+
+        </div>
+
+        <p style="
+            color:#777784;
+            font-size:10px;
+            line-height:1.8;
+        ">
+            Sistem AM Premium digunakan untuk
+            mengirim Magic Link dan melakukan
+            verifikasi akun melalui API.
+        </p>
+
+    </div>
+
+</section>
+
+
+<div class="footer">
+    AM PREMIUM • SECURE SYSTEM
+</div>
+
+
+</div>
+
+
+<script>
+
+/* ==============================
+   TAB
+============================== */
+
+function showPanel(id,button){
+
+    document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+
+    document
+    .querySelectorAll(".panel")
+    .forEach(panel=>{
+        panel.style.display="none";
+    });
+
+
+    document
+    .getElementById(id)
+    .style.display="block";
+
+}
+
+
+/* ==============================
+   API
+============================== */
+
+const API =
+"https://api.albyoffc.my.id/api/am";
+
+const API_KEY =
+"albymd_904ab2b54099f341aff0b1ad8a6600317401";
+
+
+/* ==============================
+   EMAIL CHECK
+============================== */
+
+function validEmail(email){
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email);
+
+}
+
+
+/* ==============================
+   RESULT
+============================== */
+
+function result(type,message){
+
+    const box =
+        document.getElementById("result");
+
+    box.className =
+        "result show " + type;
+
+    box.textContent =
+        message;
+
+}
+
+
+/* ==============================
+   SEND
+============================== */
+
+async function sendMagic(){
+
+    const email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+    const button =
+        document
+        .getElementById("sendBtn");
+
+
+    if(!validEmail(email)){
+
+        result(
+            "error",
+            "Masukkan email yang valid."
+        );
+
+        return;
+    }
+
+
+    button.classList.add("loading");
+
+    button.textContent =
+        "⟳ SENDING...";
+
+
+    result(
+        "ok",
+        "Mengirim Magic Link..."
+    );
+
+
+    try{
+
+        const response =
+            await fetch(
+                API +
+                "/send?email=" +
+                encodeURIComponent(email),
+                {
+                    method:"GET",
+
+                    headers:{
+                        "x-api-key":
+                            API_KEY
+                    }
+                }
+            );
+
+
+        const text =
+            await response.text();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                text ||
+                "Request gagal."
+            );
+
+        }
+
+
+        result(
+            "ok",
+            text ||
+            "✓ Magic Link berhasil dikirim."
+        );
+
+
+    }catch(error){
+
+        result(
+            "error",
+            error.message ||
+            "Gagal mengirim Magic Link."
+        );
+
+    }
+
+
+    button.classList.remove("loading");
+
+    button.textContent =
+        "↗ SEND MAGIC LINK";
+
+}
+
+
+/* ==============================
+   VERIFY
+============================== */
+
+async function verifyMagic(){
+
+    const email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+    const url =
+        document
+        .getElementById("magicUrl")
+        .value
+        .trim();
+
+    const button =
+        document
+        .getElementById("verifyBtn");
+
+
+    if(!validEmail(email)){
+
+        result(
+            "error",
+            "Masukkan email yang valid."
+        );
+
+        return;
+    }
+
+
+    if(!url){
+
+        result(
+            "error",
+            "Masukkan Magic Link terlebih dahulu."
+        );
+
+        return;
+    }
+
+
+    button.classList.add("loading");
+
+    button.textContent =
+        "⟳ VERIFYING...";
+
+
+    result(
+        "ok",
+        "Memverifikasi Magic Link..."
+    );
+
+
+    try{
+
+        const endpoint =
+            API +
+            "/verif?email=" +
+            encodeURIComponent(email) +
+            "&url=" +
+            encodeURIComponent(url);
+
+
+        const response =
+            await fetch(
+                endpoint,
+                {
+                    method:"GET",
+
+                    headers:{
+                        "x-api-key":
+                            API_KEY
+                    }
+                }
+            );
+
+
+        const text =
+            await response.text();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                text ||
+                "Verification gagal."
+            );
+
+        }
+
+
+        result(
+            "ok",
+            text ||
+            "✓ Magic Link berhasil diverifikasi."
+        );
+
+
+    }catch(error){
+
+        result(
+            "error",
+            error.message ||
+            "Verification gagal."
+        );
+
+    }
+
+
+    button.classList.remove("loading");
+
+    button.textContent =
+        "✓ VERIFY LINK";
+
+}
+
+
+/* ==============================
+   ENTER KEY
+============================== */
+
+document
+.getElementById("email")
+.addEventListener(
+    "keydown",
+    e=>{
+        if(e.key==="Enter"){
+            sendMagic();
+        }
+    }
+);
+
+</script>
+
+</body>
+</html>

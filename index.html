@@ -2,1527 +2,1466 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#050509">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-<title>AM Premium</title>
+<title>TempMail • 1TimeTech</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    -webkit-tap-highlight-color:transparent;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-:root{
-    --bg:#050509;
-    --card:rgba(16,16,24,.72);
-    --border:rgba(255,255,255,.10);
-    --text:#fff;
-    --muted:#858592;
-    --cyan:#62eaff;
-    --purple:#9d6cff;
-    --pink:#ff5fcf;
-    --green:#55f2aa;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    min-height:100vh;
-    overflow-x:hidden;
-
-    color:var(--text);
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "Inter",
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(111,76,255,.30),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 0% 45%,
-            rgba(0,220,255,.10),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 100% 70%,
-            rgba(255,50,190,.08),
-            transparent 28%
-        ),
-        #050509;
-}
-
-
-/* ==============================
-   BACKGROUND LIGHTS
-============================== */
-
-body::before,
-body::after{
-    content:"";
-    position:fixed;
-    width:260px;
-    height:260px;
-    border-radius:50%;
-    filter:blur(100px);
-    opacity:.18;
-    pointer-events:none;
-    z-index:-1;
+  min-height:100vh;
+  font-family:"Space Grotesk",sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(0,240,255,.14),transparent 28%),
+    radial-gradient(circle at 90% 85%,rgba(120,70,255,.16),transparent 32%),
+    #05060a;
+  overflow-x:hidden;
 }
 
 body::before{
-    background:#6c4cff;
-    top:25%;
-    left:-180px;
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  opacity:.3;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:36px 36px;
+  mask-image:linear-gradient(to bottom,#000,transparent);
 }
 
-body::after{
-    background:#00d9ff;
-    right:-180px;
-    bottom:15%;
-}
-
-
-/* ==============================
+/* =========================
    CONTAINER
-============================== */
+========================= */
 
 .container{
-    width:min(900px,100%);
-    margin:auto;
-    padding-bottom:70px;
+  width:min(900px,calc(100% - 28px));
+  margin:auto;
+  padding:30px 0 50px;
 }
 
+/* =========================
+   HEADER
+========================= */
 
-/* ==============================
-   HERO
-============================== */
-
-.hero{
-    height:285px;
-    position:relative;
-    overflow:hidden;
-
-    padding:25px;
-
-    display:flex;
-    align-items:flex-end;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(97,71,255,.20),
-            rgba(0,0,0,.05)
-        );
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.hero::before{
-    content:"";
-
-    position:absolute;
-
-    width:320px;
-    height:320px;
-
-    top:-170px;
-    right:-100px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(98,234,255,.35),
-            transparent 65%
-        );
-
-    filter:blur(10px);
-
-    animation:floatGlow 5s ease-in-out infinite;
-}
-
-.hero::after{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            to top,
-            #050509 0%,
-            transparent 65%
-        );
-}
-
-@keyframes floatGlow{
-    0%,100%{
-        transform:translate(0,0);
-    }
-    50%{
-        transform:translate(-20px,20px);
-    }
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-}
-
-.status-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    padding:8px 12px;
-
-    margin-bottom:13px;
-
-    border:1px solid rgba(98,234,255,.20);
-
-    border-radius:30px;
-
-    background:rgba(98,234,255,.07);
-
-    color:#aeefff;
-
-    font-size:9px;
-    font-weight:900;
-
-    letter-spacing:1.5px;
-
-    box-shadow:
-        0 0 25px rgba(98,234,255,.08);
-}
-
-.status-dot{
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:var(--green);
-
-    box-shadow:
-        0 0 10px var(--green);
-
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-    0%,100%{
-        opacity:1;
-        transform:scale(1);
-    }
-
-    50%{
-        opacity:.45;
-        transform:scale(.7);
-    }
+.header{
+  text-align:center;
+  margin-bottom:28px;
 }
 
 .logo{
-    font-size:42px;
-    font-weight:950;
+  width:72px;
+  height:72px;
+  margin:0 auto 17px;
+  display:grid;
+  place-items:center;
+  border-radius:23px;
+  font-size:31px;
 
-    letter-spacing:-2px;
+  background:
+    linear-gradient(
+      135deg,
+      #00eaff,
+      #6657ff
+    );
 
-    line-height:1;
+  box-shadow:
+    0 0 25px rgba(0,234,255,.2),
+    0 0 70px rgba(100,80,255,.12);
 }
 
-.logo span{
-    background:
-        linear-gradient(
-            90deg,
-            var(--cyan),
-            var(--purple),
-            var(--pink)
-        );
+.title{
+  font-size:clamp(34px,8vw,52px);
+  line-height:1;
+  letter-spacing:-2.5px;
+  font-weight:700;
+}
 
-    -webkit-background-clip:text;
-    background-clip:text;
+.gradient{
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #72f7ff,
+      #9b81ff
+    );
 
-    color:transparent;
-
-    text-shadow:
-        0 0 30px rgba(98,234,255,.18);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 .subtitle{
-    margin-top:10px;
-
-    color:#777784;
-
-    font-size:9px;
-
-    letter-spacing:5px;
+  margin-top:11px;
+  color:#858da0;
+  font-size:13px;
 }
 
+/* =========================
+   CARD
+========================= */
 
-/* ==============================
-   PROFILE
-============================== */
+.card{
+  position:relative;
+  overflow:hidden;
 
-.profile{
-    margin:-1px 22px 25px;
+  padding:20px;
 
-    position:relative;
-    z-index:5;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.09);
 
-    padding:19px;
+  background:
+    rgba(14,16,24,.72);
 
-    border:1px solid var(--border);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
 
-    border-radius:26px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(30,30,42,.82),
-            rgba(12,12,18,.75)
-        );
-
-    backdrop-filter:blur(25px);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.45),
-        inset 0 1px 0 rgba(255,255,255,.05);
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.35);
 }
 
-.profile-top{
-    display:flex;
-    align-items:center;
+.card::before{
+  content:"";
+  position:absolute;
 
-    gap:15px;
+  width:200px;
+  height:200px;
+
+  right:-110px;
+  top:-120px;
+
+  border-radius:50%;
+
+  background:#00eaff;
+
+  filter:blur(90px);
+
+  opacity:.12;
 }
 
-.avatar{
-    width:58px;
-    height:58px;
-
-    flex-shrink:0;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:19px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #272733,
-            #111119
-        );
-
-    border:1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 0 25px rgba(157,108,255,.15);
-
-    font-size:26px;
-}
-
-.profile-name{
-    font-size:15px;
-    font-weight:900;
-}
-
-.profile-role{
-    margin-top:5px;
-
-    color:#777784;
-
-    font-size:9px;
-}
-
-.profile-status{
-    margin-left:auto;
-
-    display:flex;
-    align-items:center;
-    gap:6px;
-
-    padding:7px 10px;
-
-    border-radius:20px;
-
-    background:rgba(85,242,170,.06);
-
-    border:1px solid rgba(85,242,170,.15);
-
-    color:#70efb4;
-
-    font-size:8px;
-    font-weight:900;
-}
-
-.profile-info{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:8px;
-
-    margin-top:16px;
-}
-
-.info{
-    padding:10px;
-
-    border-radius:13px;
-
-    background:rgba(255,255,255,.025);
-
-    border:1px solid rgba(255,255,255,.05);
-
-    text-align:center;
-}
-
-.info small{
-    display:block;
-
-    color:#666672;
-
-    font-size:7px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-}
-
-.info b{
-    display:block;
-
-    margin-top:4px;
-
-    color:#d8d8df;
-
-    font-size:9px;
-}
-
-
-/* ==============================
-   NAV
-============================== */
-
-.nav-wrap{
-    padding:0 18px;
-
-    overflow:hidden;
-}
-
-.nav{
-    display:flex;
-
-    gap:9px;
-
-    overflow-x:auto;
-
-    padding:3px 2px 13px;
-
-    scrollbar-width:none;
-}
-
-.nav::-webkit-scrollbar{
-    display:none;
-}
-
-.nav-btn{
-    flex-shrink:0;
-
-    height:45px;
-
-    padding:0 18px;
-
-    display:flex;
-    align-items:center;
-    gap:8px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,.025);
-
-    color:#70707b;
-
-    font-family:inherit;
-
-    font-size:9px;
-    font-weight:900;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.nav-btn.active{
-    color:#fff;
-
-    border-color:
-        rgba(98,234,255,.25);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(98,234,255,.13),
-            rgba(157,108,255,.12)
-        );
-
-    box-shadow:
-        0 0 25px
-        rgba(98,234,255,.07);
-}
-
-.nav-btn:active{
-    transform:scale(.95);
-}
-
-
-/* ==============================
-   CONTENT
-============================== */
-
-.section{
-    padding:
-        25px 18px 0;
-}
-
-.heading{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    margin-bottom:16px;
-}
-
-.heading-icon{
-    width:34px;
-    height:34px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(98,234,255,.12),
-            rgba(157,108,255,.12)
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    color:var(--cyan);
-}
-
-.heading h2{
-    font-size:22px;
-
-    font-weight:950;
-
-    letter-spacing:-.5px;
-}
-
-.heading-line{
-    flex:1;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.13),
-            transparent
-        );
-}
-
-
-/* ==============================
-   PREMIUM CARD
-============================== */
-
-.premium-card{
-    position:relative;
-
-    padding:23px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(157,108,255,.18);
-
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(24,22,38,.90),
-            rgba(10,10,15,.85)
-        );
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.4),
-        0 0 50px rgba(157,108,255,.04);
-}
-
-.premium-card::before{
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    top:-100px;
-    right:-60px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(157,108,255,.28),
-            transparent 65%
-        );
-
-    filter:blur(5px);
-}
-
-.premium-top{
-    position:relative;
-
-    display:flex;
-    align-items:center;
-
-    gap:14px;
-
-    margin-bottom:22px;
-}
-
-.premium-icon{
-    width:52px;
-    height:52px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(98,234,255,.15),
-            rgba(157,108,255,.16)
-        );
-
-    border:1px solid rgba(255,255,255,.10);
-
-    color:#fff;
-
-    font-size:24px;
-
-    box-shadow:
-        0 0 30px rgba(157,108,255,.10);
-}
-
-.premium-title{
-    font-size:16px;
-    font-weight:950;
-}
-
-.premium-desc{
-    margin-top:5px;
-
-    color:#777784;
-
-    font-size:9px;
-}
-
-
-/* ==============================
-   FORM
-============================== */
-
-.field{
-    margin-top:14px;
-}
+/* =========================
+   LABEL
+========================= */
 
 .label{
-    display:block;
+  position:relative;
 
-    margin-bottom:7px;
+  margin-bottom:9px;
 
-    color:#73737f;
+  color:#80899b;
 
-    font-size:8px;
+  font-size:11px;
 
-    font-weight:900;
+  text-transform:uppercase;
 
-    letter-spacing:1.2px;
-
-    text-transform:uppercase;
+  letter-spacing:1.5px;
 }
 
-.input,
-.textarea{
-    width:100%;
+/* =========================
+   EMAIL
+========================= */
 
-    outline:none;
+.email-box{
+  position:relative;
 
-    color:#fff;
+  display:flex;
+  align-items:center;
 
-    background:
-        rgba(0,0,0,.35);
+  gap:7px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.08);
+  padding:5px;
 
-    border-radius:13px;
+  border-radius:16px;
 
-    font-family:inherit;
+  background:
+    rgba(0,0,0,.27);
 
-    transition:.2s;
+  border:
+    1px solid rgba(255,255,255,.08);
 }
 
-.input{
-    height:45px;
+.email{
+  flex:1;
 
-    padding:0 13px;
+  min-width:0;
 
-    font-size:10px;
+  padding:13px;
+
+  color:#fff;
+
+  font-size:14px;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
 }
 
-.textarea{
-    min-height:76px;
+.copy{
+  width:44px;
+  height:44px;
 
-    padding:12px;
+  flex-shrink:0;
 
-    resize:none;
+  border:0;
 
-    font-size:10px;
+  border-radius:13px;
+
+  color:#fff;
+
+  background:
+    rgba(255,255,255,.07);
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-.input:focus,
-.textarea:focus{
-    border-color:
-        rgba(98,234,255,.40);
+.copy:hover{
+  background:
+    rgba(255,255,255,.14);
 
-    box-shadow:
-        0 0 20px
-        rgba(98,234,255,.06);
+  transform:translateY(-1px);
 }
 
-.input::placeholder,
-.textarea::placeholder{
-    color:#45454f;
-}
-
-
-/* ==============================
+/* =========================
    BUTTONS
-============================== */
+========================= */
 
 .actions{
-    display:flex;
+  position:relative;
 
-    gap:9px;
+  display:grid;
 
-    margin-top:10px;
+  grid-template-columns:1fr 1fr;
+
+  gap:10px;
+
+  margin-top:12px;
 }
 
 .btn{
-    height:38px;
+  border:0;
 
-    padding:0 15px;
+  padding:14px;
 
-    border:1px solid rgba(255,255,255,.10);
+  border-radius:15px;
 
-    border-radius:11px;
+  color:#fff;
 
-    color:#fff;
+  font-family:inherit;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(98,234,255,.13),
-            rgba(157,108,255,.15)
-        );
+  font-size:13px;
 
-    font-family:inherit;
+  font-weight:600;
 
-    font-size:8px;
-    font-weight:950;
+  cursor:pointer;
 
-    cursor:pointer;
-
-    transition:.2s;
-
-    box-shadow:
-        0 0 20px
-        rgba(98,234,255,.04);
-}
-
-.btn.verify{
-    background:
-        rgba(255,255,255,.035);
-
-    color:#aaa;
+  transition:.2s;
 }
 
 .btn:hover{
-    border-color:
-        rgba(98,255,255,.30);
+  transform:translateY(-1px);
 
-    box-shadow:
-        0 0 25px
-        rgba(98,234,255,.10);
+  filter:brightness(1.08);
 }
 
-.btn:active{
-    transform:scale(.95);
+.generate{
+  background:
+    linear-gradient(
+      135deg,
+      #00dfff,
+      #6655ff
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,210,255,.13);
 }
 
-.btn.loading{
-    opacity:.6;
-    pointer-events:none;
+.refresh{
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid rgba(255,255,255,.08);
 }
 
+/* =========================
+   STATUS
+========================= */
 
-/* ==============================
-   RESULT
-============================== */
+.status{
+  position:relative;
 
-.result{
-    display:none;
+  display:flex;
 
-    margin-top:12px;
+  align-items:center;
 
-    padding:11px 13px;
+  gap:8px;
 
-    border-radius:12px;
+  margin-top:14px;
 
-    font-size:9px;
+  color:#7d8698;
 
-    line-height:1.5;
+  font-size:12px;
 }
 
-.result.show{
-    display:block;
+.dot{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#4f5664;
+
+  transition:.2s;
 }
 
-.result.ok{
-    color:#69edb0;
+.dot.active{
+  background:#00e5a5;
 
-    background:
-        rgba(85,242,170,.05);
-
-    border:
-        1px solid
-        rgba(85,242,170,.13);
+  box-shadow:
+    0 0 12px #00e5a5;
 }
 
-.result.error{
-    color:#ff7085;
+/* =========================
+   INBOX
+========================= */
 
-    background:
-        rgba(255,70,100,.05);
-
-    border:
-        1px solid
-        rgba(255,70,100,.13);
+.inbox{
+  margin-top:18px;
 }
 
+.inbox-head{
+  display:flex;
 
-/* ==============================
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:12px;
+}
+
+.inbox-title{
+  font-size:19px;
+  font-weight:600;
+}
+
+.badge{
+  padding:6px 10px;
+
+  border-radius:99px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  color:#858da0;
+
+  font-size:11px;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.messages{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+}
+
+.empty{
+  text-align:center;
+
+  padding:50px 15px;
+
+  border:
+    1px dashed rgba(255,255,255,.09);
+
+  border-radius:18px;
+
+  color:#70798b;
+}
+
+.empty-icon{
+  font-size:36px;
+
+  margin-bottom:10px;
+}
+
+.message{
+  padding:16px;
+
+  border-radius:17px;
+
+  border:
+    1px solid rgba(255,255,255,.07);
+
+  background:
+    rgba(255,255,255,.045);
+
+  transition:.2s;
+}
+
+.message:hover{
+  background:
+    rgba(255,255,255,.06);
+
+  transform:translateY(-1px);
+}
+
+.message-top{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+}
+
+.sender{
+  font-size:14px;
+
+  font-weight:600;
+
+  word-break:break-all;
+}
+
+.time{
+  color:#656e80;
+
+  font-size:10px;
+
+  white-space:nowrap;
+}
+
+.subject{
+  margin-top:7px;
+
+  color:#c2c8d5;
+
+  font-size:13px;
+}
+
+.preview{
+  margin-top:7px;
+
+  color:#747d8f;
+
+  font-size:12px;
+
+  line-height:1.5;
+
+  word-break:break-word;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+  display:none;
+
+  text-align:center;
+
+  padding:15px;
+
+  color:#80899b;
+
+  font-size:12px;
+}
+
+.spinner{
+  display:inline-block;
+
+  width:15px;
+  height:15px;
+
+  border:
+    2px solid rgba(255,255,255,.15);
+
+  border-top-color:#00eaff;
+
+  border-radius:50%;
+
+  animation:
+    spin .7s linear infinite;
+
+  vertical-align:middle;
+
+  margin-right:7px;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:25px;
+
+  z-index:99;
+
+  padding:12px 17px;
+
+  border-radius:13px;
+
+  background:#151923;
+
+  border:
+    1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.45);
+
+  font-size:12px;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transform:
+    translate(-50%,20px);
+
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+
+  transform:
+    translate(-50%,0);
+}
+
+/* =========================
    FOOTER
-============================== */
+========================= */
 
 .footer{
-    padding:35px 20px 0;
+  text-align:center;
 
-    text-align:center;
+  margin-top:25px;
 
-    color:#3f3f48;
+  color:#505869;
 
-    font-size:8px;
-
-    letter-spacing:2px;
+  font-size:10px;
 }
 
-
-/* ==============================
+/* =========================
    MOBILE
-============================== */
+========================= */
 
-@media(max-width:500px){
+@media(max-width:600px){
 
-    .hero{
-        height:245px;
-    }
+  .container{
+    padding-top:22px;
+  }
 
-    .logo{
-        font-size:35px;
-    }
+  .card{
+    padding:16px;
 
-    .profile{
-        margin-left:18px;
-        margin-right:18px;
-    }
+    border-radius:20px;
+  }
 
-    .profile-info{
-        grid-template-columns:
-            repeat(3,1fr);
-    }
+  .actions{
+    grid-template-columns:1fr;
+  }
 
-    .section{
-        padding-left:15px;
-        padding-right:15px;
-    }
-
-    .premium-card{
-        padding:19px;
-    }
-
-}
-
-@media(max-width:360px){
-
-    .profile-status{
-        display:none;
-    }
-
-    .profile-info{
-        gap:5px;
-    }
-
-    .nav-btn{
-        padding:0 14px;
-    }
+  .title{
+    font-size:39px;
+  }
 
 }
 </style>
 </head>
 
-
 <body>
 
 <div class="container">
 
+  <!-- HEADER -->
 
-<!-- ==============================
-     HERO
-============================== -->
+  <header class="header">
 
-<header class="hero">
-
-    <div class="hero-content">
-
-        <div class="status-pill">
-            <span class="status-dot"></span>
-            SYSTEM ONLINE
-        </div>
-
-        <div class="logo">
-            AM <span>Premium</span>
-        </div>
-
-        <div class="subtitle">
-            SECURE ACCOUNT SYSTEM
-        </div>
-
+    <div class="logo">
+      ✉
     </div>
 
-</header>
+    <h1 class="title">
+      <span class="gradient">
+        TempMail
+      </span>
+    </h1>
+
+    <p class="subtitle">
+      Temporary email powered by 1TimeTech
+    </p>
+
+  </header>
 
 
-<!-- ==============================
-     PROFILE
-============================== -->
+  <!-- EMAIL -->
 
-<section class="profile">
+  <section class="card">
 
-    <div class="profile-top">
+    <div class="label">
+      Temporary Email
+    </div>
 
-        <div class="avatar">
-            ◉
-        </div>
+    <div class="email-box">
 
-        <div>
+      <div
+        class="email"
+        id="email"
+      >
+        Klik Generate Email
+      </div>
 
-            <div class="profile-name">
-                AM Account
-            </div>
-
-            <div class="profile-role">
-                Premium verification system
-            </div>
-
-        </div>
-
-        <div class="profile-status">
-            <span class="status-dot"></span>
-            ONLINE
-        </div>
+      <button
+        class="copy"
+        onclick="copyEmail()"
+        title="Copy Email"
+      >
+        ⧉
+      </button>
 
     </div>
 
 
-    <div class="profile-info">
+    <div class="actions">
 
-        <div class="info">
-            <small>Region</small>
-            <b>Indonesia</b>
-        </div>
+      <button
+        class="btn generate"
+        onclick="createEmail()"
+      >
+        ⚡ Generate Email
+      </button>
 
-        <div class="info">
-            <small>System</small>
-            <b>AM API</b>
-        </div>
+      <button
+        class="btn refresh"
+        onclick="refreshInbox()"
+      >
+        ↻ Refresh Inbox
+      </button>
 
-        <div class="info">
-            <small>Security</small>
-            <b>Active</b>
-        </div>
+    </div>
+
+
+    <div class="status">
+
+      <span
+        class="dot"
+        id="dot"
+      ></span>
+
+      <span id="status">
+        Belum ada email
+      </span>
 
     </div>
 
-</section>
+  </section>
 
 
-<!-- ==============================
-     NAV
-============================== -->
+  <!-- INBOX -->
 
-<div class="nav-wrap">
+  <section class="inbox">
 
-    <div class="nav">
+    <div class="inbox-head">
 
-        <button
-            class="nav-btn active"
-            onclick="showPanel('premium',this)">
-            ✦ AM PREMIUM
-        </button>
+      <div class="inbox-title">
+        Inbox
+      </div>
 
-        <button
-            class="nav-btn"
-            onclick="showPanel('about',this)">
-            ◉ ABOUT
-        </button>
+      <div
+        class="badge"
+        id="count"
+      >
+        0 messages
+      </div>
 
     </div>
+
+
+    <div class="card">
+
+      <div
+        class="loading"
+        id="loading"
+      >
+        <span class="spinner"></span>
+        Menghubungkan ke API...
+      </div>
+
+
+      <div
+        class="messages"
+        id="messages"
+      >
+
+        <div class="empty">
+
+          <div class="empty-icon">
+            📭
+          </div>
+
+          <div>
+            Inbox kosong
+          </div>
+
+          <div
+            style="
+              margin-top:5px;
+              font-size:11px
+            "
+          >
+            Generate temporary email terlebih dahulu.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="footer">
+    TMailor Temporary Mail
+  </div>
 
 </div>
 
 
-<!-- ==============================
-     PREMIUM
-============================== -->
-
-<section
-    id="premium"
-    class="section panel">
-
-    <div class="heading">
-
-        <div class="heading-icon">
-            ✦
-        </div>
-
-        <h2>
-            AM Premium
-        </h2>
-
-        <div class="heading-line"></div>
-
-    </div>
-
-
-    <div class="premium-card">
-
-        <div class="premium-top">
-
-            <div class="premium-icon">
-                ✦
-            </div>
-
-            <div>
-
-                <div class="premium-title">
-                    Magic Link
-                </div>
-
-                <div class="premium-desc">
-                    Send & verify account
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- EMAIL -->
-
-        <div class="field">
-
-            <label class="label">
-                Account Email
-            </label>
-
-            <input
-                id="email"
-                class="input"
-                type="email"
-                autocomplete="email"
-                placeholder="nama@email.com"
-            >
-
-        </div>
-
-
-        <div class="actions">
-
-            <button
-                id="sendBtn"
-                class="btn"
-                onclick="sendMagic()">
-
-                ↗ SEND MAGIC LINK
-
-            </button>
-
-        </div>
-
-
-        <!-- URL -->
-
-        <div class="field">
-
-            <label class="label">
-                Magic Link URL
-            </label>
-
-            <textarea
-                id="magicUrl"
-                class="textarea"
-                placeholder="Paste Magic Link di sini..."
-            ></textarea>
-
-        </div>
-
-
-        <div class="actions">
-
-            <button
-                id="verifyBtn"
-                class="btn verify"
-                onclick="verifyMagic()">
-
-                ✓ VERIFY LINK
-
-            </button>
-
-        </div>
-
-
-        <div
-            id="result"
-            class="result">
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==============================
-     ABOUT
-============================== -->
-
-<section
-    id="about"
-    class="section panel"
-    style="display:none">
-
-    <div class="heading">
-
-        <div class="heading-icon">
-            ◉
-        </div>
-
-        <h2>
-            About
-        </h2>
-
-        <div class="heading-line"></div>
-
-    </div>
-
-
-    <div class="premium-card">
-
-        <div class="premium-top">
-
-            <div class="premium-icon">
-                ⚡
-            </div>
-
-            <div>
-
-                <div class="premium-title">
-                    AM Premium
-                </div>
-
-                <div class="premium-desc">
-                    Secure account verification
-                </div>
-
-            </div>
-
-        </div>
-
-        <p style="
-            color:#777784;
-            font-size:10px;
-            line-height:1.8;
-        ">
-            Sistem AM Premium digunakan untuk
-            mengirim Magic Link dan melakukan
-            verifikasi akun melalui API.
-        </p>
-
-    </div>
-
-</section>
-
-
-<div class="footer">
-    AM PREMIUM • SECURE SYSTEM
-</div>
-
-
-</div>
+<div
+  class="toast"
+  id="toast"
+></div>
 
 
 <script>
 
-/* ==============================
-   TAB
-============================== */
-
-function showPanel(id,button){
-
-    document
-    .querySelectorAll(".nav-btn")
-    .forEach(btn=>{
-        btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-
-    document
-    .querySelectorAll(".panel")
-    .forEach(panel=>{
-        panel.style.display="none";
-    });
-
-
-    document
-    .getElementById(id)
-    .style.display="block";
-
-}
-
-
-/* ==============================
-   API
-============================== */
+/* =========================================
+   API 1TIMETECH
+========================================= */
 
 const API =
-"https://api.albyoffc.my.id/api/am";
-
-const API_KEY =
-"albymd_904ab2b54099f341aff0b1ad8a6600317401";
+  "https://api.alwayscodex.eu.cc/api/tempmail/1timetech";
 
 
-/* ==============================
-   EMAIL CHECK
-============================== */
+let currentEmail = "";
+let currentMailId = "";
 
-function validEmail(email){
 
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        .test(email);
+/* =========================================
+   RANDOM EMAIL
+========================================= */
 
+function randomName(){
+
+  const chars =
+    "abcdefghijklmnopqrstuvwxyz0123456789";
+
+  let name = "";
+
+  for(let i = 0; i < 8; i++){
+
+    name +=
+      chars[
+        Math.floor(
+          Math.random() * chars.length
+        )
+      ];
+
+  }
+
+  return name;
 }
 
 
-/* ==============================
-   RESULT
-============================== */
+/* =========================================
+   CREATE EMAIL
+========================================= */
 
-function result(type,message){
+async function createEmail(){
 
-    const box =
-        document.getElementById("result");
+  setLoading(true);
 
-    box.className =
-        "result show " + type;
-
-    box.textContent =
-        message;
-
-}
+  setStatus(
+    "Membuat email...",
+    false
+  );
 
 
-/* ==============================
-   SEND
-============================== */
-
-async function sendMagic(){
-
-    const email =
-        document
-        .getElementById("email")
-        .value
-        .trim();
-
-    const button =
-        document
-        .getElementById("sendBtn");
+  const nama =
+    randomName();
 
 
-    if(!validEmail(email)){
+  /*
+    API yang digunakan:
 
-        result(
-            "error",
-            "Masukkan email yang valid."
-        );
-
-        return;
-    }
+    /1timetech
+    ?action=create
+    &email=abc@voewo.com
+  */
 
 
-    button.classList.add("loading");
-
-    button.textContent =
-        "⟳ SENDING...";
+  const generatedEmail =
+    nama + "@voewo.com";
 
 
-    result(
-        "ok",
-        "Mengirim Magic Link..."
+  const url =
+    API +
+    "?action=create" +
+    "&email=" +
+    encodeURIComponent(
+      generatedEmail
     );
 
 
-    try{
-
-        const response =
-            await fetch(
-                API +
-                "/send?email=" +
-                encodeURIComponent(email),
-                {
-                    method:"GET",
-
-                    headers:{
-                        "x-api-key":
-                            API_KEY
-                    }
-                }
-            );
+  console.log(
+    "REQUEST:",
+    url
+  );
 
 
-        const text =
-            await response.text();
+  try{
 
+    const response =
+      await fetch(
+        url,
+        {
+          method:"GET",
 
-        if(!response.ok){
-
-            throw new Error(
-                text ||
-                "Request gagal."
-            );
-
+          headers:{
+            "Accept":
+              "application/json"
+          }
         }
+      );
 
 
-        result(
-            "ok",
-            text ||
-            "✓ Magic Link berhasil dikirim."
-        );
+    if(!response.ok){
 
-
-    }catch(error){
-
-        result(
-            "error",
-            error.message ||
-            "Gagal mengirim Magic Link."
-        );
+      throw new Error(
+        "HTTP " +
+        response.status
+      );
 
     }
 
 
-    button.classList.remove("loading");
+    const data =
+      await response.json();
 
-    button.textContent =
-        "↗ SEND MAGIC LINK";
+
+    console.log(
+      "API RESPONSE:",
+      data
+    );
+
+
+    /*
+      Struktur 1TimeTech:
+
+      {
+        status: true,
+        result: {
+          email: "...",
+          mailId: "..."
+        }
+      }
+    */
+
+
+    if(
+      !data ||
+      !data.result
+    ){
+
+      throw new Error(
+        "Response API tidak valid"
+      );
+
+    }
+
+
+    currentEmail =
+      data.result.email ||
+      generatedEmail;
+
+
+    currentMailId =
+      data.result.mailId ||
+      "";
+
+
+    document.getElementById(
+      "email"
+    ).textContent =
+      currentEmail;
+
+
+    /*
+      Simpan session
+    */
+
+    localStorage.setItem(
+      "tempmail_email",
+      currentEmail
+    );
+
+
+    localStorage.setItem(
+      "tempmail_mailId",
+      currentMailId
+    );
+
+
+    setStatus(
+      "Email aktif",
+      true
+    );
+
+
+    showToast(
+      "Email berhasil dibuat ✓"
+    );
+
+
+    /*
+      Coba membaca messages
+      jika response API menyediakannya.
+    */
+
+    const messages =
+      data.result.messages ||
+      data.result.inbox ||
+      data.messages ||
+      data.inbox ||
+      [];
+
+
+    renderMessages(
+      messages
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "API ERROR:",
+      error
+    );
+
+
+    setStatus(
+      "Gagal membuat email",
+      false
+    );
+
+
+    showToast(
+      error.message ||
+      "Gagal menghubungi API"
+    );
+
+
+  }finally{
+
+    setLoading(false);
+
+  }
 
 }
 
 
-/* ==============================
-   VERIFY
-============================== */
+/* =========================================
+   REFRESH
+========================================= */
 
-async function verifyMagic(){
+async function refreshInbox(){
 
-    const email =
-        document
-        .getElementById("email")
-        .value
-        .trim();
+  if(!currentEmail){
+
+    showToast(
+      "Generate email terlebih dahulu"
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Endpoint yang diberikan adalah
+    action=create.
+
+    Untuk refresh, kita request
+    email yang sama.
+  */
+
+  setLoading(true);
+
+
+  try{
 
     const url =
-        document
-        .getElementById("magicUrl")
-        .value
-        .trim();
-
-    const button =
-        document
-        .getElementById("verifyBtn");
+      API +
+      "?action=create" +
+      "&email=" +
+      encodeURIComponent(
+        currentEmail
+      );
 
 
-    if(!validEmail(email)){
+    const response =
+      await fetch(
+        url,
+        {
+          method:"GET",
 
-        result(
-            "error",
-            "Masukkan email yang valid."
-        );
+          headers:{
+            "Accept":
+              "application/json"
+          }
+        }
+      );
 
-        return;
+
+    if(!response.ok){
+
+      throw new Error(
+        "HTTP " +
+        response.status
+      );
+
     }
 
 
-    if(!url){
-
-        result(
-            "error",
-            "Masukkan Magic Link terlebih dahulu."
-        );
-
-        return;
-    }
+    const data =
+      await response.json();
 
 
-    button.classList.add("loading");
-
-    button.textContent =
-        "⟳ VERIFYING...";
-
-
-    result(
-        "ok",
-        "Memverifikasi Magic Link..."
+    console.log(
+      "REFRESH RESPONSE:",
+      data
     );
 
 
-    try{
-
-        const endpoint =
-            API +
-            "/verif?email=" +
-            encodeURIComponent(email) +
-            "&url=" +
-            encodeURIComponent(url);
+    const messages =
+      data.result?.messages ||
+      data.result?.inbox ||
+      data.messages ||
+      data.inbox ||
+      [];
 
 
-        const response =
-            await fetch(
-                endpoint,
-                {
-                    method:"GET",
-
-                    headers:{
-                        "x-api-key":
-                            API_KEY
-                    }
-                }
-            );
+    renderMessages(
+      messages
+    );
 
 
-        const text =
-            await response.text();
+    showToast(
+      "Inbox diperbarui ✓"
+    );
 
 
-        if(!response.ok){
+  }catch(error){
 
-            throw new Error(
-                text ||
-                "Verification gagal."
-            );
+    console.error(error);
 
-        }
+    showToast(
+      "Gagal refresh inbox"
+    );
 
+  }finally{
 
-        result(
-            "ok",
-            text ||
-            "✓ Magic Link berhasil diverifikasi."
-        );
+    setLoading(false);
 
-
-    }catch(error){
-
-        result(
-            "error",
-            error.message ||
-            "Verification gagal."
-        );
-
-    }
-
-
-    button.classList.remove("loading");
-
-    button.textContent =
-        "✓ VERIFY LINK";
+  }
 
 }
 
 
-/* ==============================
-   ENTER KEY
-============================== */
+/* =========================================
+   RENDER INBOX
+========================================= */
 
-document
-.getElementById("email")
-.addEventListener(
-    "keydown",
-    e=>{
-        if(e.key==="Enter"){
-            sendMagic();
-        }
+function renderMessages(messages){
+
+  const box =
+    document.getElementById(
+      "messages"
+    );
+
+
+  const count =
+    document.getElementById(
+      "count"
+    );
+
+
+  if(!Array.isArray(messages)){
+
+    messages = [];
+
+  }
+
+
+  count.textContent =
+    messages.length +
+    (
+      messages.length === 1
+      ? " message"
+      : " messages"
+    );
+
+
+  if(messages.length === 0){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          📭
+        </div>
+
+        <div>
+          Inbox kosong
+        </div>
+
+        <div
+          style="
+            margin-top:5px;
+            font-size:11px
+          "
+        >
+          Belum ada pesan masuk.
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    messages.map(
+      message => {
+
+        const sender =
+          escapeHTML(
+            message.from ||
+            message.sender ||
+            message.email ||
+            "Unknown sender"
+          );
+
+
+        const subject =
+          escapeHTML(
+            message.subject ||
+            message.title ||
+            "No subject"
+          );
+
+
+        const body =
+          escapeHTML(
+            message.body ||
+            message.text ||
+            message.content ||
+            message.preview ||
+            ""
+          );
+
+
+        const time =
+          escapeHTML(
+            message.time ||
+            message.date ||
+            message.created_at ||
+            ""
+          );
+
+
+        return `
+
+          <div class="message">
+
+            <div class="message-top">
+
+              <div class="sender">
+                ${sender}
+              </div>
+
+              <div class="time">
+                ${time}
+              </div>
+
+            </div>
+
+
+            <div class="subject">
+              ${subject}
+            </div>
+
+
+            <div class="preview">
+              ${body}
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+async function copyEmail(){
+
+  if(!currentEmail){
+
+    showToast(
+      "Belum ada email"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await navigator.clipboard.writeText(
+      currentEmail
+    );
+
+
+    showToast(
+      "Email berhasil disalin ✓"
+    );
+
+
+  }catch(error){
+
+    showToast(
+      "Gagal menyalin email"
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function setStatus(
+  text,
+  active
+){
+
+  document.getElementById(
+    "status"
+  ).textContent =
+    text;
+
+
+  const dot =
+    document.getElementById(
+      "dot"
+    );
+
+
+  if(active){
+
+    dot.classList.add(
+      "active"
+    );
+
+  }else{
+
+    dot.classList.remove(
+      "active"
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+function setLoading(state){
+
+  document.getElementById(
+    "loading"
+  ).style.display =
+    state
+    ? "block"
+    : "none";
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(text){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.textContent =
+    text;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.toastTimer
+  );
+
+
+  window.toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2200
+    );
+
+}
+
+
+/* =========================================
+   ESCAPE
+========================================= */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+/* =========================================
+   RESTORE SESSION
+========================================= */
+
+window.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    const savedEmail =
+      localStorage.getItem(
+        "tempmail_email"
+      );
+
+
+    const savedMailId =
+      localStorage.getItem(
+        "tempmail_mailId"
+      );
+
+
+    if(savedEmail){
+
+      currentEmail =
+        savedEmail;
+
+      currentMailId =
+        savedMailId || "";
+
+
+      document.getElementById(
+        "email"
+      ).textContent =
+        savedEmail;
+
+
+      setStatus(
+        "Session tersimpan",
+        true
+      );
+
     }
+
+  }
 );
 
 </script>

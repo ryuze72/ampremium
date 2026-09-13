@@ -2,601 +2,178 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 
-<title>TempMail • 1TimeTech</title>
+<title>WhatsApp Reaction</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+  box-sizing: border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  min-height:100vh;
-  font-family:"Space Grotesk",sans-serif;
-  color:#fff;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(circle at 10% 10%,rgba(0,240,255,.14),transparent 28%),
-    radial-gradient(circle at 90% 85%,rgba(120,70,255,.16),transparent 32%),
-    #05060a;
-  overflow-x:hidden;
+    radial-gradient(circle at top, #252525 0, #111 45%, #080808 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  opacity:.3;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:36px 36px;
-  mask-image:linear-gradient(to bottom,#000,transparent);
+.container {
+  width: 100%;
+  max-width: 430px;
 }
 
-/* =========================
-   CONTAINER
-========================= */
-
-.container{
-  width:min(900px,calc(100% - 28px));
-  margin:auto;
-  padding:30px 0 50px;
+.card {
+  background: rgba(25,25,25,.94);
+  border: 1px solid #333;
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
 }
 
-/* =========================
-   HEADER
-========================= */
-
-.header{
-  text-align:center;
-  margin-bottom:28px;
+.logo {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 15px;
+  border-radius: 18px;
+  background: #25D366;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
 }
 
-.logo{
-  width:72px;
-  height:72px;
-  margin:0 auto 17px;
-  display:grid;
-  place-items:center;
-  border-radius:23px;
-  font-size:31px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #00eaff,
-      #6657ff
-    );
-
-  box-shadow:
-    0 0 25px rgba(0,234,255,.2),
-    0 0 70px rgba(100,80,255,.12);
+h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 25px;
 }
 
-.title{
-  font-size:clamp(34px,8vw,52px);
-  line-height:1;
-  letter-spacing:-2.5px;
-  font-weight:700;
+.subtitle {
+  text-align: center;
+  color: #999;
+  margin: 8px 0 25px;
+  font-size: 14px;
 }
 
-.gradient{
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      #72f7ff,
-      #9b81ff
-    );
-
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+  font-size: 14px;
 }
 
-.subtitle{
-  margin-top:11px;
-  color:#858da0;
-  font-size:13px;
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 13px;
+  border: 1px solid #3b3b3b;
+  outline: none;
+  background: #111;
+  color: white;
+  font-size: 14px;
 }
 
-/* =========================
-   CARD
-========================= */
-
-.card{
-  position:relative;
-  overflow:hidden;
-
-  padding:20px;
-
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.09);
-
-  background:
-    rgba(14,16,24,.72);
-
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.35);
+input:focus {
+  border-color: #25D366;
 }
 
-.card::before{
-  content:"";
-  position:absolute;
-
-  width:200px;
-  height:200px;
-
-  right:-110px;
-  top:-120px;
-
-  border-radius:50%;
-
-  background:#00eaff;
-
-  filter:blur(90px);
-
-  opacity:.12;
+.reactions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 22px;
 }
 
-/* =========================
-   LABEL
-========================= */
-
-.label{
-  position:relative;
-
-  margin-bottom:9px;
-
-  color:#80899b;
-
-  font-size:11px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1.5px;
+.reaction {
+  flex: 1;
+  padding: 13px 5px;
+  border-radius: 13px;
+  border: 1px solid #3b3b3b;
+  background: #111;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  transition: .2s;
 }
 
-/* =========================
-   EMAIL
-========================= */
-
-.email-box{
-  position:relative;
-
-  display:flex;
-  align-items:center;
-
-  gap:7px;
-
-  padding:5px;
-
-  border-radius:16px;
-
-  background:
-    rgba(0,0,0,.27);
-
-  border:
-    1px solid rgba(255,255,255,.08);
+.reaction.active {
+  background: #183b27;
+  border-color: #25D366;
+  transform: translateY(-2px);
 }
 
-.email{
-  flex:1;
-
-  min-width:0;
-
-  padding:13px;
-
-  color:#fff;
-
-  font-size:14px;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-
-  white-space:nowrap;
+button.send {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 14px;
+  background: #25D366;
+  color: #061b0d;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.copy{
-  width:44px;
-  height:44px;
-
-  flex-shrink:0;
-
-  border:0;
-
-  border-radius:13px;
-
-  color:#fff;
-
-  background:
-    rgba(255,255,255,.07);
-
-  font-size:18px;
-
-  cursor:pointer;
-
-  transition:.2s;
+button.send:disabled {
+  opacity: .5;
+  cursor: not-allowed;
 }
 
-.copy:hover{
-  background:
-    rgba(255,255,255,.14);
-
-  transform:translateY(-1px);
+.status {
+  display: none;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 13px;
+  background: #111;
+  border: 1px solid #333;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
-.actions{
-  position:relative;
-
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:10px;
-
-  margin-top:12px;
+.status.show {
+  display: block;
 }
 
-.btn{
-  border:0;
-
-  padding:14px;
-
-  border-radius:15px;
-
-  color:#fff;
-
-  font-family:inherit;
-
-  font-size:13px;
-
-  font-weight:600;
-
-  cursor:pointer;
-
-  transition:.2s;
+.status.success {
+  border-color: #25D366;
 }
 
-.btn:hover{
-  transform:translateY(-1px);
-
-  filter:brightness(1.08);
+.status.error {
+  border-color: #ff4d4d;
 }
 
-.generate{
-  background:
-    linear-gradient(
-      135deg,
-      #00dfff,
-      #6655ff
-    );
-
-  box-shadow:
-    0 10px 30px
-    rgba(0,210,255,.13);
+.loading {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(0,0,0,.3);
+  border-top-color: #061b0d;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  vertical-align: middle;
+  margin-right: 7px;
 }
 
-.refresh{
-  background:
-    rgba(255,255,255,.06);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-}
-
-/* =========================
-   STATUS
-========================= */
-
-.status{
-  position:relative;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  margin-top:14px;
-
-  color:#7d8698;
-
-  font-size:12px;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-
-  border-radius:50%;
-
-  background:#4f5664;
-
-  transition:.2s;
-}
-
-.dot.active{
-  background:#00e5a5;
-
-  box-shadow:
-    0 0 12px #00e5a5;
-}
-
-/* =========================
-   INBOX
-========================= */
-
-.inbox{
-  margin-top:18px;
-}
-
-.inbox-head{
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  margin-bottom:12px;
-}
-
-.inbox-title{
-  font-size:19px;
-  font-weight:600;
-}
-
-.badge{
-  padding:6px 10px;
-
-  border-radius:99px;
-
-  background:
-    rgba(255,255,255,.06);
-
-  color:#858da0;
-
-  font-size:11px;
-}
-
-/* =========================
-   MESSAGE
-========================= */
-
-.messages{
-  display:flex;
-
-  flex-direction:column;
-
-  gap:10px;
-}
-
-.empty{
-  text-align:center;
-
-  padding:50px 15px;
-
-  border:
-    1px dashed rgba(255,255,255,.09);
-
-  border-radius:18px;
-
-  color:#70798b;
-}
-
-.empty-icon{
-  font-size:36px;
-
-  margin-bottom:10px;
-}
-
-.message{
-  padding:16px;
-
-  border-radius:17px;
-
-  border:
-    1px solid rgba(255,255,255,.07);
-
-  background:
-    rgba(255,255,255,.045);
-
-  transition:.2s;
-}
-
-.message:hover{
-  background:
-    rgba(255,255,255,.06);
-
-  transform:translateY(-1px);
-}
-
-.message-top{
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:10px;
-}
-
-.sender{
-  font-size:14px;
-
-  font-weight:600;
-
-  word-break:break-all;
-}
-
-.time{
-  color:#656e80;
-
-  font-size:10px;
-
-  white-space:nowrap;
-}
-
-.subject{
-  margin-top:7px;
-
-  color:#c2c8d5;
-
-  font-size:13px;
-}
-
-.preview{
-  margin-top:7px;
-
-  color:#747d8f;
-
-  font-size:12px;
-
-  line-height:1.5;
-
-  word-break:break-word;
-}
-
-/* =========================
-   LOADING
-========================= */
-
-.loading{
-  display:none;
-
-  text-align:center;
-
-  padding:15px;
-
-  color:#80899b;
-
-  font-size:12px;
-}
-
-.spinner{
-  display:inline-block;
-
-  width:15px;
-  height:15px;
-
-  border:
-    2px solid rgba(255,255,255,.15);
-
-  border-top-color:#00eaff;
-
-  border-radius:50%;
-
-  animation:
-    spin .7s linear infinite;
-
-  vertical-align:middle;
-
-  margin-right:7px;
-}
-
-@keyframes spin{
-  to{
-    transform:rotate(360deg);
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-  position:fixed;
-
-  left:50%;
-  bottom:25px;
-
-  z-index:99;
-
-  padding:12px 17px;
-
-  border-radius:13px;
-
-  background:#151923;
-
-  border:
-    1px solid rgba(255,255,255,.1);
-
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.45);
-
-  font-size:12px;
-
-  opacity:0;
-
-  pointer-events:none;
-
-  transform:
-    translate(-50%,20px);
-
-  transition:.25s;
-}
-
-.toast.show{
-  opacity:1;
-
-  transform:
-    translate(-50%,0);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-  text-align:center;
-
-  margin-top:25px;
-
-  color:#505869;
-
-  font-size:10px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-  .container{
-    padding-top:22px;
-  }
-
-  .card{
-    padding:16px;
-
-    border-radius:20px;
-  }
-
-  .actions{
-    grid-template-columns:1fr;
-  }
-
-  .title{
-    font-size:39px;
-  }
-
+.footer {
+  text-align: center;
+  margin-top: 15px;
+  color: #666;
+  font-size: 11px;
 }
 </style>
 </head>
@@ -605,865 +182,207 @@ body::before{
 
 <div class="container">
 
-  <!-- HEADER -->
+  <div class="card">
 
-  <header class="header">
+    <div class="logo">💚</div>
 
-    <div class="logo">
-      ✉
+    <h1>WhatsApp Reaction</h1>
+
+    <div class="subtitle">
+      Kirim reaction ke channel WhatsApp
     </div>
 
-    <h1 class="title">
-      <span class="gradient">
-        TempMail
-      </span>
-    </h1>
+    <label>URL WhatsApp</label>
 
-    <p class="subtitle">
-      Temporary email powered by 1TimeTech
-    </p>
+    <input
+      id="url"
+      type="url"
+      placeholder="https://whatsapp.com/channel/..."
+      autocomplete="off"
+    >
 
-  </header>
+    <br><br>
 
+    <label>Pilih Reaction</label>
 
-  <!-- EMAIL -->
+    <div class="reactions">
 
-  <section class="card">
+      <button class="reaction" data-reaction="❤️">
+        ❤️
+      </button>
 
-    <div class="label">
-      Temporary Email
-    </div>
+      <button class="reaction" data-reaction="👍">
+        👍
+      </button>
 
-    <div class="email-box">
-
-      <div
-        class="email"
-        id="email"
-      >
-        Klik Generate Email
-      </div>
-
-      <button
-        class="copy"
-        onclick="copyEmail()"
-        title="Copy Email"
-      >
-        ⧉
+      <button class="reaction" data-reaction="🔥">
+        🔥
       </button>
 
     </div>
 
+    <button class="send" id="send">
+      Kirim Reaction
+    </button>
 
-    <div class="actions">
+    <div id="status" class="status"></div>
 
-      <button
-        class="btn generate"
-        onclick="createEmail()"
-      >
-        ⚡ Generate Email
-      </button>
-
-      <button
-        class="btn refresh"
-        onclick="refreshInbox()"
-      >
-        ↻ Refresh Inbox
-      </button>
-
-    </div>
-
-
-    <div class="status">
-
-      <span
-        class="dot"
-        id="dot"
-      ></span>
-
-      <span id="status">
-        Belum ada email
-      </span>
-
-    </div>
-
-  </section>
-
-
-  <!-- INBOX -->
-
-  <section class="inbox">
-
-    <div class="inbox-head">
-
-      <div class="inbox-title">
-        Inbox
-      </div>
-
-      <div
-        class="badge"
-        id="count"
-      >
-        0 messages
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div
-        class="loading"
-        id="loading"
-      >
-        <span class="spinner"></span>
-        Menghubungkan ke API...
-      </div>
-
-
-      <div
-        class="messages"
-        id="messages"
-      >
-
-        <div class="empty">
-
-          <div class="empty-icon">
-            📭
-          </div>
-
-          <div>
-            Inbox kosong
-          </div>
-
-          <div
-            style="
-              margin-top:5px;
-              font-size:11px
-            "
-          >
-            Generate temporary email terlebih dahulu.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
+  </div>
 
   <div class="footer">
-    TMailor Temporary Mail
+    Reaction Web
   </div>
 
 </div>
 
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
-
 <script>
+const reactionButtons =
+  document.querySelectorAll(".reaction");
 
-/* =========================================
-   API 1TIMETECH
-========================================= */
+const sendButton =
+  document.getElementById("send");
 
-const API =
-  "https://api.alwayscodex.eu.cc/api/tempmail/1timetech";
+const urlInput =
+  document.getElementById("url");
 
+const statusBox =
+  document.getElementById("status");
 
-let currentEmail = "";
-let currentMailId = "";
+let selectedReactions = [];
 
+reactionButtons.forEach(button => {
 
-/* =========================================
-   RANDOM EMAIL
-========================================= */
+  button.addEventListener("click", () => {
 
-function randomName(){
+    const reaction =
+      button.dataset.reaction;
 
-  const chars =
-    "abcdefghijklmnopqrstuvwxyz0123456789";
+    if (selectedReactions.includes(reaction)) {
 
-  let name = "";
-
-  for(let i = 0; i < 8; i++){
-
-    name +=
-      chars[
-        Math.floor(
-          Math.random() * chars.length
-        )
-      ];
-
-  }
-
-  return name;
-}
-
-
-/* =========================================
-   CREATE EMAIL
-========================================= */
-
-async function createEmail(){
-
-  setLoading(true);
-
-  setStatus(
-    "Membuat email...",
-    false
-  );
-
-
-  const nama =
-    randomName();
-
-
-  /*
-    API yang digunakan:
-
-    /1timetech
-    ?action=create
-    &email=abc@voewo.com
-  */
-
-
-  const generatedEmail =
-    nama + "@voewo.com";
-
-
-  const url =
-    API +
-    "?action=create" +
-    "&email=" +
-    encodeURIComponent(
-      generatedEmail
-    );
-
-
-  console.log(
-    "REQUEST:",
-    url
-  );
-
-
-  try{
-
-    const response =
-      await fetch(
-        url,
-        {
-          method:"GET",
-
-          headers:{
-            "Accept":
-              "application/json"
-          }
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "HTTP " +
-        response.status
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-
-    console.log(
-      "API RESPONSE:",
-      data
-    );
-
-
-    /*
-      Struktur 1TimeTech:
-
-      {
-        status: true,
-        result: {
-          email: "...",
-          mailId: "..."
-        }
-      }
-    */
-
-
-    if(
-      !data ||
-      !data.result
-    ){
-
-      throw new Error(
-        "Response API tidak valid"
-      );
-
-    }
-
-
-    currentEmail =
-      data.result.email ||
-      generatedEmail;
-
-
-    currentMailId =
-      data.result.mailId ||
-      "";
-
-
-    document.getElementById(
-      "email"
-    ).textContent =
-      currentEmail;
-
-
-    /*
-      Simpan session
-    */
-
-    localStorage.setItem(
-      "tempmail_email",
-      currentEmail
-    );
-
-
-    localStorage.setItem(
-      "tempmail_mailId",
-      currentMailId
-    );
-
-
-    setStatus(
-      "Email aktif",
-      true
-    );
-
-
-    showToast(
-      "Email berhasil dibuat ✓"
-    );
-
-
-    /*
-      Coba membaca messages
-      jika response API menyediakannya.
-    */
-
-    const messages =
-      data.result.messages ||
-      data.result.inbox ||
-      data.messages ||
-      data.inbox ||
-      [];
-
-
-    renderMessages(
-      messages
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "API ERROR:",
-      error
-    );
-
-
-    setStatus(
-      "Gagal membuat email",
-      false
-    );
-
-
-    showToast(
-      error.message ||
-      "Gagal menghubungi API"
-    );
-
-
-  }finally{
-
-    setLoading(false);
-
-  }
-
-}
-
-
-/* =========================================
-   REFRESH
-========================================= */
-
-async function refreshInbox(){
-
-  if(!currentEmail){
-
-    showToast(
-      "Generate email terlebih dahulu"
-    );
-
-    return;
-
-  }
-
-
-  /*
-    Endpoint yang diberikan adalah
-    action=create.
-
-    Untuk refresh, kita request
-    email yang sama.
-  */
-
-  setLoading(true);
-
-
-  try{
-
-    const url =
-      API +
-      "?action=create" +
-      "&email=" +
-      encodeURIComponent(
-        currentEmail
-      );
-
-
-    const response =
-      await fetch(
-        url,
-        {
-          method:"GET",
-
-          headers:{
-            "Accept":
-              "application/json"
-          }
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "HTTP " +
-        response.status
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-
-    console.log(
-      "REFRESH RESPONSE:",
-      data
-    );
-
-
-    const messages =
-      data.result?.messages ||
-      data.result?.inbox ||
-      data.messages ||
-      data.inbox ||
-      [];
-
-
-    renderMessages(
-      messages
-    );
-
-
-    showToast(
-      "Inbox diperbarui ✓"
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Gagal refresh inbox"
-    );
-
-  }finally{
-
-    setLoading(false);
-
-  }
-
-}
-
-
-/* =========================================
-   RENDER INBOX
-========================================= */
-
-function renderMessages(messages){
-
-  const box =
-    document.getElementById(
-      "messages"
-    );
-
-
-  const count =
-    document.getElementById(
-      "count"
-    );
-
-
-  if(!Array.isArray(messages)){
-
-    messages = [];
-
-  }
-
-
-  count.textContent =
-    messages.length +
-    (
-      messages.length === 1
-      ? " message"
-      : " messages"
-    );
-
-
-  if(messages.length === 0){
-
-    box.innerHTML = `
-
-      <div class="empty">
-
-        <div class="empty-icon">
-          📭
-        </div>
-
-        <div>
-          Inbox kosong
-        </div>
-
-        <div
-          style="
-            margin-top:5px;
-            font-size:11px
-          "
-        >
-          Belum ada pesan masuk.
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    messages.map(
-      message => {
-
-        const sender =
-          escapeHTML(
-            message.from ||
-            message.sender ||
-            message.email ||
-            "Unknown sender"
-          );
-
-
-        const subject =
-          escapeHTML(
-            message.subject ||
-            message.title ||
-            "No subject"
-          );
-
-
-        const body =
-          escapeHTML(
-            message.body ||
-            message.text ||
-            message.content ||
-            message.preview ||
-            ""
-          );
-
-
-        const time =
-          escapeHTML(
-            message.time ||
-            message.date ||
-            message.created_at ||
-            ""
-          );
-
-
-        return `
-
-          <div class="message">
-
-            <div class="message-top">
-
-              <div class="sender">
-                ${sender}
-              </div>
-
-              <div class="time">
-                ${time}
-              </div>
-
-            </div>
-
-
-            <div class="subject">
-              ${subject}
-            </div>
-
-
-            <div class="preview">
-              ${body}
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    ).join("");
-
-}
-
-
-/* =========================================
-   COPY
-========================================= */
-
-async function copyEmail(){
-
-  if(!currentEmail){
-
-    showToast(
-      "Belum ada email"
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    await navigator.clipboard.writeText(
-      currentEmail
-    );
-
-
-    showToast(
-      "Email berhasil disalin ✓"
-    );
-
-
-  }catch(error){
-
-    showToast(
-      "Gagal menyalin email"
-    );
-
-  }
-
-}
-
-
-/* =========================================
-   STATUS
-========================================= */
-
-function setStatus(
-  text,
-  active
-){
-
-  document.getElementById(
-    "status"
-  ).textContent =
-    text;
-
-
-  const dot =
-    document.getElementById(
-      "dot"
-    );
-
-
-  if(active){
-
-    dot.classList.add(
-      "active"
-    );
-
-  }else{
-
-    dot.classList.remove(
-      "active"
-    );
-
-  }
-
-}
-
-
-/* =========================================
-   LOADING
-========================================= */
-
-function setLoading(state){
-
-  document.getElementById(
-    "loading"
-  ).style.display =
-    state
-    ? "block"
-    : "none";
-
-}
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-function showToast(text){
-
-  const toast =
-    document.getElementById(
-      "toast"
-    );
-
-
-  toast.textContent =
-    text;
-
-
-  toast.classList.add(
-    "show"
-  );
-
-
-  clearTimeout(
-    window.toastTimer
-  );
-
-
-  window.toastTimer =
-    setTimeout(
-      () => {
-
-        toast.classList.remove(
-          "show"
+      selectedReactions =
+        selectedReactions.filter(
+          x => x !== reaction
         );
 
-      },
-      2200
-    );
+      button.classList.remove("active");
 
+    } else {
+
+      selectedReactions.push(reaction);
+
+      button.classList.add("active");
+    }
+
+  });
+
+});
+
+function showStatus(message, type) {
+
+  statusBox.className =
+    "status show " + type;
+
+  statusBox.textContent = message;
 }
 
+sendButton.addEventListener("click", async () => {
 
-/* =========================================
-   ESCAPE
-========================================= */
+  const url = urlInput.value.trim();
 
-function escapeHTML(value){
-
-  return String(value)
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
+  if (!url) {
+    showStatus(
+      "Masukkan URL WhatsApp terlebih dahulu.",
+      "error"
     );
+    return;
+  }
 
-}
+  if (!url.includes("whatsapp.com")) {
+    showStatus(
+      "URL harus berupa link WhatsApp.",
+      "error"
+    );
+    return;
+  }
 
+  if (selectedReactions.length === 0) {
+    showStatus(
+      "Pilih minimal satu reaction.",
+      "error"
+    );
+    return;
+  }
 
-/* =========================================
-   RESTORE SESSION
-========================================= */
+  sendButton.disabled = true;
 
-window.addEventListener(
-  "DOMContentLoaded",
-  () => {
+  sendButton.innerHTML =
+    '<span class="loading"></span>Memproses...';
 
-    const savedEmail =
-      localStorage.getItem(
-        "tempmail_email"
+  showStatus(
+    "Mengambil challenge dan mengirim reaction...",
+    ""
+  );
+
+  try {
+
+    const response =
+      await fetch("/api/send-react", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          url: url,
+          reactions: selectedReactions
+        })
+
+      });
+
+    const data =
+      await response.json();
+
+    console.log(data);
+
+    if (response.ok && data.status) {
+
+      showStatus(
+        "✅ Reaction berhasil diproses!\n\n" +
+        JSON.stringify(data.result, null, 2),
+        "success"
       );
 
+    } else {
 
-    const savedMailId =
-      localStorage.getItem(
-        "tempmail_mailId"
-      );
-
-
-    if(savedEmail){
-
-      currentEmail =
-        savedEmail;
-
-      currentMailId =
-        savedMailId || "";
-
-
-      document.getElementById(
-        "email"
-      ).textContent =
-        savedEmail;
-
-
-      setStatus(
-        "Session tersimpan",
-        true
+      showStatus(
+        "❌ Gagal:\n" +
+        (data.message ||
+        JSON.stringify(data.result || data)),
+        "error"
       );
 
     }
 
-  }
-);
+  } catch (error) {
 
+    showStatus(
+      "❌ Terjadi error koneksi:\n" +
+      error.message,
+      "error"
+    );
+
+  } finally {
+
+    sendButton.disabled = false;
+
+    sendButton.textContent =
+      "Kirim Reaction";
+
+  }
+
+});
 </script>
 
 </body>
